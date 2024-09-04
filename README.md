@@ -1,4 +1,4 @@
-# cubo_app_bare
+# school_api
 
 py -m venv venv
 venv\scripts\activate
@@ -9,8 +9,6 @@ Set-ExecutionPolicy -ExecutionPolicy Unrestricted -Scope LocalMachine
 
 # Install Django and Django REST framework into the virtual environment
 
-py -m pip install -U mypy
-pip install pytest
 pip install django
 pip install djangorestframework
 pip install markdown       # Markdown support for the browsable API.
