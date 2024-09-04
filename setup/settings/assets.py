@@ -1,4 +1,3 @@
-
 from .environment import BASE_DIR
 
 STATIC_URL = "/static/"
