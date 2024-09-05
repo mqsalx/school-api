@@ -10,7 +10,7 @@ class CourseModel(models.Model):
     )
 
     code = models.CharField(max_length=10)
-    description = models.EmailField(max_length=100, blank=False)
+    description = models.CharField(max_length=100, blank=False)
     level = models.CharField(
         max_length=1, choices=LEVEL, blank=False, null=False, default="B"
     )

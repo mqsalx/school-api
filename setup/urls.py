@@ -7,7 +7,7 @@ app_name = "admin"
 
 urlpatterns = [
     path("admin/", admin.site.urls),
-    path("", include("school.urls")),
+    path("", include("school.urls.setup")),
 ]
 
 
