@@ -4,7 +4,7 @@ from school.models.student import StudentModel
 
 
 @admin.register(StudentModel)
-class StudentAdmin(admin.ModelAdmin):
+class StudentsAdmin(admin.ModelAdmin):
     list_display = ("id", "name", "email", "cpf", "b_day", "phone")
     list_display_links = ("id", "name")
     list_per_page = 10
