@@ -8,4 +8,5 @@ class StudentsAdmin(admin.ModelAdmin):
     list_display = ("id", "name", "email", "cpf", "b_day", "phone")
     list_display_links = ("id", "name")
     list_per_page = 10
-    search_fields = ("name",)
+    search_fields = ("name", "cpf")
+    ordering = ("name",)

@@ -1,6 +1,7 @@
 from django.contrib import admin
-from django.urls import include, path
+from django.urls import include, path, re_path
 from rest_framework import routers
+from django.views.generic import RedirectView
 
 from school.views.course import CourseView
 from school.views.registration import RegistrationView
@@ -14,6 +15,10 @@ router.register("courses", CourseView, basename="courses")
 router.register("registrations", RegistrationView, basename="registrations")
 
 urlpatterns = [
+    re_path(
+        r"^favicon\.ico$",
+        RedirectView.as_view(url="/static/favicon.ico"),
+    ),
     path("admin/", admin.site.urls),
     path("", include(router.urls)),
     path("courses/<int:pk>/registrations/", ListRegistrationCourseView.as_view()),
