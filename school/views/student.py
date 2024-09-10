@@ -9,7 +9,7 @@ from school.serializers.student_v2 import StudentSerializerV2
 
 class StudentView(ModelViewSet):
 
-    queryset = StudentModel.objects.all()
+    queryset = StudentModel.objects.all().order_by("id")
     # serializer_class = StudentSerializer
     filter_backends = [
         DjangoFilterBackend,
