@@ -12,6 +12,7 @@ from school.views.throttles.user_rate_throttle import (
 
 class RegistrationView(ModelViewSet):
 
+    http_method_names = ["get", "post"]
     queryset = RegistrationModel.objects.all().order_by("id")
     serializer_class = RegistrationSerializer
     throttle_classes = [
