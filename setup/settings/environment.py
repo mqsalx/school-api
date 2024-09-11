@@ -15,8 +15,10 @@ APPEND_SLASH = True
 
 if os.environ.get("ENV_MODE") == "development":
     DEBUG = True
-
-CORS_ALLOW_ALL_ORIGINS = True
-ALLOWED_HOSTS = ["*"]
-CSRF_TRUSTED_ORIGINS = ["http://localhost", "http://127.0.0.1"]
-CORS_ALLOW_HEADERS = ["*"]
+    CORS_ALLOWED_ORIGINS = [
+        "http://localhost:8042",
+        "http://127.0.0.1:8042",
+    ]
+else:
+    DEBUG = False
+    ALLOWED_HOSTS = ["localhost", "127.0.0.1"]
