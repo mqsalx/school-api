@@ -8,6 +8,16 @@ from school.serializers.student_v2 import StudentSerializerV2
 
 
 class StudentView(ModelViewSet):
+    """
+    A viewset for managing student data.
+    Attributes:
+        queryset (QuerySet): The queryset of all student objects.
+        filter_backends (list): The list of filter backends used for filtering student objects.
+        ordering_fields (list): The list of fields used for ordering student objects.
+        search_fields (list): The list of fields used for searching student objects.
+    Methods:
+        get_serializer_class: Returns the appropriate serializer class based on the request version.
+    """
 
     queryset = StudentModel.objects.all().order_by("id")
     # serializer_class = StudentSerializer
