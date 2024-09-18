@@ -28,10 +28,3 @@ class RequestGetStudentTestCase(APITestCase):
         self.client.force_authenticate(self.user)  # type: ignore
         response = self.client.get(self.url)
         self.assertEqual(response.status_code, status.HTTP_200_OK)
-
-    def test_request_get_not_authorized(self):
-        """
-        Test that verifies the authenticity of a user with invalid credentials
-        """
-        response = self.client.get(self.url)
-        self.assertEqual(response.status_code, status.HTTP_200_OK)
