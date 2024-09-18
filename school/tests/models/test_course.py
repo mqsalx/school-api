@@ -3,7 +3,7 @@ from django.test import TestCase
 from school.models.course import CourseModel
 
 
-class CourseTestCase(TestCase):
+class CourseModelTestCase(TestCase):
 
     def setUp(self) -> None:
         self.course = CourseModel.objects.create(
@@ -12,7 +12,7 @@ class CourseTestCase(TestCase):
             level="B",
         )
 
-    def test_course(self):
+    def test_course_model_attributes(self):
         """
         Test that checks course attributes.
         """

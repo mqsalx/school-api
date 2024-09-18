@@ -3,7 +3,7 @@ from django.test import TestCase
 from school.models.student import StudentModel
 
 
-class StudentTestCase(TestCase):
+class StudentModelTestCase(TestCase):
 
     def setUp(self) -> None:
         self.student = StudentModel.objects.create(
@@ -14,7 +14,7 @@ class StudentTestCase(TestCase):
             phone="99 99999-9999",
         )
 
-    def test_student(self):
+    def test_student_model_attributes(self):
         """
         Test that checks student attributes.
         """

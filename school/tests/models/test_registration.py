@@ -5,7 +5,7 @@ from school.models.registration import RegistrationModel
 from school.models.student import StudentModel
 
 
-class RegistrationTestCase(TestCase):
+class RegistrationModelTestCase(TestCase):
 
     def setUp(self) -> None:
         self.course = CourseModel.objects.create(
@@ -28,7 +28,7 @@ class RegistrationTestCase(TestCase):
             period="N",
         )
 
-    def test_registration(self):
+    def test_registration_model_attributes(self):
         """
         Test that checks registration attributes.
         """
