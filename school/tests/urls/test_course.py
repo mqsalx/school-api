@@ -8,24 +8,15 @@ from school.serializers.course import CourseSerializer
 
 
 class CourseUrlTestCase(APITestCase):
+    fixtures = ["utils/school_prototype_db.json"]
 
     def setUp(self):
-        self.superuser = User.objects.create_superuser(
-            username="admin", password="admin", email="admin@example.com"
-        )
-        self.client.force_authenticate(user=self.superuser)  # type: ignore
+        self.user = User.objects.get(username="administrator")
+        self.client.force_authenticate(user=self.user)  # type: ignore
+        self.url = reverse("students-list")
+        self.course_one = CourseModel.objects.get(pk=1)
+        self.course_two = CourseModel.objects.get(pk=2)
         self.url = reverse("courses-list")
-        self.course_one = CourseModel.objects.create(
-            code="Python",
-            description="Python course",
-            level="A",
-        )
-
-        self.course_two = CourseModel.objects.create(
-            code="JavaScript",
-            description="JavaScript",
-            level="A",
-        )
 
     def test_course_url_list(self):
         """
@@ -63,6 +54,10 @@ class CourseUrlTestCase(APITestCase):
         """
         Testing PUT request to update a course.
         """
-        data = {"code": "JavaScript", "description": "JavaScript", "level": "I"}
+        data = {
+            "code": "JavaScript",
+            "description": "JavaScript",
+            "level": "I",
+        }
         response = self.client.put(f"{self.url}{self.course_two.id}/", data=data)  # type: ignore
         self.assertEqual(response.status_code, status.HTTP_200_OK)

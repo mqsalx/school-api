@@ -8,27 +8,14 @@ from school.serializers.student import StudentSerializer
 
 
 class StudentUrlTestCase(APITestCase):
+    fixtures = ["utils/school_prototype_db.json"]
 
     def setUp(self):
-        self.superuser = User.objects.create_superuser(
-            username="admin", password="admin", email="admin@example.com"
-        )
-        self.client.force_authenticate(user=self.superuser)  # type: ignore
+        self.user = User.objects.get(username="administrator")
+        self.client.force_authenticate(user=self.user)  # type: ignore
         self.url = reverse("students-list")
-        self.student_one = StudentModel.objects.create(
-            name="John Doe",
-            email="emailstudentone@email.com",
-            cpf="08265042051",
-            b_day="2000-01-01",
-            phone="99 99999-9999",
-        )
-        self.student_two = StudentModel.objects.create(
-            name="Mary Jane",
-            email="emailstudenttwo@email.com",
-            cpf="1937153162",
-            b_day="1999-01-01",
-            phone="99 99999-9999",
-        )
+        self.student_one = StudentModel.objects.get(pk=1)
+        self.student_two = StudentModel.objects.get(pk=2)
 
     def test_student_url_list(self):
         """

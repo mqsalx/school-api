@@ -10,48 +10,18 @@ from school.serializers.registration import RegistrationSerializer
 
 
 class RegistrationUrlTestCase(APITestCase):
+    fixtures = ["utils/school_prototype_db.json"]
 
     def setUp(self):
-        self.superuser = User.objects.create_superuser(
-            username="admin", password="admin", email="admin@example.com"
-        )
-        self.client.force_authenticate(user=self.superuser)  # type: ignore
+        self.user = User.objects.get(username="administrator")
+        self.client.force_authenticate(user=self.user)  # type: ignore
         self.url = reverse("registrations-list")
-        self.course_one = CourseModel.objects.create(
-            code="Python",
-            description="Python course",
-            level="A",
-        )
-
-        self.course_two = CourseModel.objects.create(
-            code="JavaScript",
-            description="JavaScript course",
-            level="B",
-        )
-        self.student_one = StudentModel.objects.create(
-            name="John Doe",
-            email="emailstudentone@email.com",
-            cpf="08265042051",
-            b_day="2000-01-01",
-            phone="99 99999-9999",
-        )
-        self.student_two = StudentModel.objects.create(
-            name="Mary Jane",
-            email="emailstudenttwo@email.com",
-            cpf="1937153162",
-            b_day="1999-01-01",
-            phone="99 99999-9999",
-        )
-        self.registration_one = RegistrationModel.objects.create(
-            course=self.course_one,
-            student=self.student_one,
-            period="N",
-        )
-        self.registration_two = RegistrationModel.objects.create(
-            course=self.course_two,
-            student=self.student_two,
-            period="M",
-        )
+        self.student_one = StudentModel.objects.get(pk=1)
+        self.student_two = StudentModel.objects.get(pk=2)
+        self.course_one = CourseModel.objects.get(pk=1)
+        self.course_two = CourseModel.objects.get(pk=2)
+        self.registration_one = RegistrationModel.objects.get(pk=1)
+        self.registration_two = RegistrationModel.objects.get(pk=2)
 
     def test_registration_url_list(self):
         """
