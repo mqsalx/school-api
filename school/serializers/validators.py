@@ -4,7 +4,7 @@ from validate_docbr import CPF
 
 
 def name_alpha(name_value):
-    return not name_value.isalpha()
+    return not name_value.replace(" ", "").isalpha()
 
 
 def cpf_validate(cpf_value):
