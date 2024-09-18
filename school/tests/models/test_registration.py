@@ -34,4 +34,4 @@ class RegistrationTestCase(TestCase):
         """
         self.assertEqual(self.registration.course, self.course)
         self.assertEqual(self.registration.student, self.student)
-        self.assertEqual(self.registration.period, "n")
+        self.assertEqual(self.registration.period, "N")
