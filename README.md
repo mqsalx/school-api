@@ -1,61 +1,59 @@
 # 💼🧑‍💻 School API
 
-## 📜 Descrição do Projeto
+## 📜 Project Description
 
-- Este projeto é uma API RESTful desenvolvida em **Django** e utilizando **MySQL** como banco de dados.
-  A API permite a gestão de estudantes, cursos e matrículas, fornecendo operações CRUD (Criar, Ler, Atualizar e Deletar) para cada uma dessas entidades.
-  Além disso, implementa funcionalidades avançadas como paginação, ordenação, filtragem, e está protegida com autenticação **JWT (JSON Web Token)**, garantindo a segurança das rotas.
+- This project is a RESTful API developed in Django and using MySQL as a database. The API allows the management of students, courses and enrollments, providing CRUD (Create, Read, Update and Delete) operations for each of these entities. In addition, it implements advanced features such as paging, sorting, filtering, and is protected with JWT (JSON Web Token) authentication, ensuring the security of the routes.
 
-## 📂 Estrutura do Projeto
+## 📂 Project Structure
 
 ```bash
 school_api/
 ├── school/
-│   ├── admin/                 # Configurações do admin Django
-│   ├── migrations/            # Arquivos de migração do banco de dados
-│   ├── models/                # Definição dos modelos de dados
-│   ├── serializers/           # Serializadores para transformar dados da API
-│   ├── urls/                  # Definição das rotas
-│   ├── views/                 # Lógica das views da API (CRUD de usuários)
-│   └── tests/                 # Testes automatizados da API
-├── setup/                     # Configurações sensíveis e arquivos ASGI/WSGI
-├── static/                    # Arquivos estáticos do projeto
-├── utils/                     # Funções auxiliares
-├── venv/                      # Ambiente virtual com dependências Python
-├── .env                       # Variáveis de ambiente
-├── .flake8                    # Configuração do Flake8
-├── .gitignore                 # Arquivos ignorados pelo Git
-├── pyproject.toml             # Configurações de formatação (Black, etc.)
-├── manage.py                  # Comando de gerenciamento do Django
-└── requirements.txt           # Dependências do projeto
+│   ├── admin/                 # Django admin settings
+│   ├── migrations/            # Database migration files
+│   ├── models/                # Defining data models
+│   ├── serializers/           # Serializers to transform API data
+│   ├── urls/                  # Route definition
+│   ├── views/                 # API view logic (user CRUD)
+│   └── tests/                 # Automated API Testing
+├── setup/                     # Sensitive settings and ASGI/WSGI files
+├── static/                    # Static project files
+├── utils/                     # Auxiliary functions
+├── venv/                      # Virtual environment with Python dependencies
+├── .env                       # Environment variables
+├── .flake8                    # Flake8 Configuration
+├── .gitignore                 # Files ignored by Git
+├── pyproject.toml             # Formatting settings (Black, etc.)
+├── manage.py                  # Django Management Command
+└── requirements.txt           # Project dependencies
 ```
 
-## 🎛️ Funcionalidades:
+## 🎛️ Features
 
-- **Gestão de Estudantes**: Registre, atualize e gerencie dados dos estudantes, incluindo nome, email e CPF.
-- **Gestão de Cursos**: Criação e gerenciamento de cursos com níveis de complexidade (Básico, Intermediário e Avançado).
-- **Gestão de Matrículas**: Inscrição de estudantes em cursos, com opções de diferentes turnos (Manhã, Tarde, Noite).
-- **Documentação interativa**: Utiliza Swagger e Redoc para exibir a documentação da API de forma interativa.
-- **Autenticação JWT**: Para proteger as rotas e garantir que apenas usuários autenticados possam acessar as funcionalidades.
-- [**Throttle**](./school/views/throttles/README.md): Limitação de requisições por usuário e anônimo para evitar consumo indesejado no uso da API.
+- **Gestão de Estudantes**: Register, update and manage student data, including name, email and CPF.
+- **Gestão de Cursos**: Creation and management of courses with levels of complexity (Basic, Intermediate and Advanced).
+- **Gestão de Matrículas**: Enrollment of students in courses, with options for different shifts (Morning, Afternoon, Evening).
+- **Documentação interativa**: Uses Swagger and Redoc to display API documentation interactively.
+- **Autenticação JWT**: To secure routes and ensure that only authenticated users can access functionality.
+- [**Throttle**](./school/views/throttles/README.md): Limitation of requests per user and anonymously to avoid unwanted consumption when using the API.
 
-## 🛠️ Tecnologias Utilizadas
+## 🛠️ Technologies Used
 
-- **Django**: Framework web robusto utilizado para criar a API RESTful.
-- **Django REST Framework (DRF)**: Biblioteca poderosa para facilitar o desenvolvimento de APIs em - **Django**.
-- **Django Filters**: Utilizado para implementar filtros avançados na API.
-- **JWT (JSON Web Token)**: Implementado para autenticação segura.
-- **MySQL**: Banco de dados relacional utilizado para armazenar os dados.
-- **Swagger e Redoc**: Para geração e visualização da documentação interativa da API.
-- **Throttle Rates**: Controle de limite de requisições com base no tipo de usuário (autenticado ou anônimo).
+- **Django**: Robust web framework used to create the RESTful API.
+- **Django REST Framework (DRF)**: Powerful library to facilitate API development in - **Django**.
+- **Django Filters**: Used to implement advanced filters in the API.
+- **JWT (JSON Web Token)**: Implemented for secure authentication.
+- **MySQL**: Relational database used to store data.
+- **Swagger e Redoc**: For generating and viewing interactive API documentation.
+- **Throttle Rates**: Request limit control based on user type (authenticated or anonymous).
 
-## 🛣️ Rotas da API
+## 🛣️ API Routes
 
-- ### 🔐 Rotas de Autenticação JWT
+- ### 🔐 JWT Authentication Routes
 
   - **POST /token/**
 
-    Obter Token de Acesso (Access e Refresh Token).
+    Get Access Token (Access and Refresh Token).
 
     **Body**:
 
@@ -68,7 +66,7 @@ school_api/
 
   - **POST /token/refresh/**
 
-    Renovar o Token de Acesso (usando o Refresh Token).
+    Renew the Access Token (using Refresh Token).
 
     **Body**:
 
@@ -80,7 +78,7 @@ school_api/
 
   - **POST /token/verify/**
 
-    Verificar o Token de Acesso (usando o Access Token).
+    Verify Access Token (using Access Token).
 
     **Body**:
 
@@ -90,11 +88,11 @@ school_api/
     }
     ```
 
-- ### 🧑‍💻 Rotas do Estudante
+- ### 🧑‍💻 Student Routes
 
   - **POST /students/**
 
-    Registrar um novo usuário.
+    Register a new user.
 
     **Body**:
 
@@ -110,19 +108,19 @@ school_api/
 
   - **GET /students/**
 
-    Obter todos os estudantes registrados.
+    Get all registered students.
 
   - **GET /students/:id**
 
-    Obter estudante específico registrado.
+    Get specific student registered.
 
   - **GET /students/:id/registrations/**
 
-    Obter todas matriculas em que um estudante está registrado mediante de um ID específico de estudante.
+    Get all enrollments where a student is registered using a specific student ID.
 
   - **PATCH /students/:id**
 
-    Atualizar estudante registrado.
+    Update registered student.
 
     **Body**:
 
@@ -135,13 +133,13 @@ school_api/
 
   - **DELETE /students/:id**
 
-    Deletar estudante específico.
+    Delete specific student.
 
-- ### 👨🏼‍🏫 Rotas do Curso
+- ### 👨🏼‍🏫 Course Routes
 
   - **POST /courses/**
 
-    Registrar um novo curso.
+    Register a new course.
 
     **Body**:
 
@@ -155,19 +153,19 @@ school_api/
 
   - **GET /courses/**
 
-    Obter todos os cursos registrados.
+    Get all registered courses.
 
   - **GET /courses/:id**
 
-    Obter curso específico registrado.
+    Get specific course registered.
 
   - **GET /courses/:id/registrations/**
 
-    Obter alunos registrados mediante de um ID específico de curso.
+    Get registered students using a specific course ID.
 
   - **PATCH /courses/:id**
 
-    Atualizar curso registrado.
+    Update registered course.
 
     **Body**:
 
@@ -180,13 +178,13 @@ school_api/
 
   - **DELETE /courses/:id**
 
-    Deletar curso específico.
+    Delete specific course.
 
-- ### 📑 Rotas da Matrícula
+- ### 📑 Enrollment Routes
 
   - **POST /registrations/**
 
-    Registrar uma nova matrícula.
+    Register a new registration.
 
     **Body**:
 
@@ -200,43 +198,45 @@ school_api/
 
   - **GET /registrations/**
 
-    Obter todos as matrículas registradas.
+    Get all registered license plates.
 
   - **GET /registrations/:id**
 
-    Obter matrícula específica registrada.
+    Get specific license plate registered.
 
 ## 🐳 Docker Compose
 
-1. - **Construindo e iniciando a imagem**
-   - Iniciando o MySQL
+1. - **Building and starting the image**
+
+   - Starting MySQL
      ```bash
      docker-compose up -d db
      ```
-   - Iniciando o Django
+
+   - Starting Django
 
      ```bash
      docker-compose up -d web
      ```
 
-   - Iniciando o Nginx
+   - Starting Nginx
 
      ```bash
      docker-compose up -d nginx
      ```
 
-2. - **Parar o contêiner**
+2. - **Stop the container**
    ```bash
    docker-compose down
    ```
 
-## ▶️ Ambiente virtual:
+## ▶️ Virtual environment
 
-1. - **Criando o ambiente**
+1. - **Creating the environment**
    ```bash
    python -m venv venv
    ```
-2. - **Ativando o Ambiente Virtual**
+2. - **Activating the Virtual Environment**
    ### - Windows:
    ```bash
    venv\scripts\activate
@@ -245,16 +245,13 @@ school_api/
    ```bash
    source venv/bin/activate
    ```
-3. - **Instalação de Dependências**
+3. - **Installing Dependencies**
    ```bash
    pip install -r requirements.txt
    ```
-4. - **Adicionando o venv ao Jupyter como Kernel**
-   ```bash
-   python -m ipykernel install --user --name=venv
-   ```
 
-## ✅ Executando Migrações
+
+## ✅ Running Migrations
 
 ```bash
 python manage.py makemigrations
@@ -262,13 +259,13 @@ python manage.py makemigrations
 python manage.py migrate
 ```
 
-## 🦸 Criando o SuperUser
+## 🦸 Creating the SuperUser
 
 ```bash
 python manage.py createsuperuser
 ```
 
-## 🏁 Executando o Servidor
+## 🏁 Running the Server
 
 ```bash
 python manage.py runserver
