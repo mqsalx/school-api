@@ -16,12 +16,12 @@ class StudentSerializerV2(serializers.ModelSerializer):
 
     def validate(self, data):
 
-        if name_alpha(data["name"]):
+        if "name" in data and name_alpha(data["name"]):
             raise serializers.ValidationError(
                 {"name": "Name must have only letters!"}
             )
 
-        if phone_len(data["phone"]):
+        if "phone" in data and phone_len(data["phone"]):
             raise serializers.ValidationError(
                 {"phone": "Phone must have 11 digits! 99 99999-9999"}
             )
