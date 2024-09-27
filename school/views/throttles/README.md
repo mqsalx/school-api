@@ -1,26 +1,26 @@
 # 🛡️Throttling - School API
 
-## 📜 Introdução
+## 📜 Introduction
 
-- O Throttle foi usado neste projeto para limitar a taxa de requisições que um cliente pode fazer a uma API dentro de um período de tempo definido. Isso é útil para proteger a API contra abuso ou uso excessivo, tanto por usuários anônimos quanto autenticados.
+- Throttle was used in this project to limit the rate of requests a client can make to an API within a defined time period. This is useful for protecting the API from abuse or overuse, both by anonymous and authenticated users.
 
-## 📝 Neste projeto, como exemplo, implementamos duas classes de Throttle personalizadas:
+## 📝 In this project, as an example, we implement two custom Throttle classes:
 
-- `RegistrationAnonRateThrottle`: Limita o número de registros diários para usuários anônimos.
+- `RegistrationAnonRateThrottle`: Limits the number of daily logs for anonymous users.
 
-- `RegistrationUserRateThrottle`: Limita o número de registros diários para usuários autenticados.
+- `RegistrationUserRateThrottle`: Limits the number of daily logs for authenticated users.
 
-## ⚒️ Como Funciona o Throttling?
+## ⚒️ How Does Throttling Work?
 
-- O Throttling é configurado para garantir que um número específico de requisições possa ser feito dentro de um intervalo de tempo determinado. Se um usuário exceder esse limite, uma resposta com o código de status 429 Too Many Requests será retornada.
+- Throttling is configured to ensure that a specific number of requests can be made within a given time frame. If a user exceeds this limit, a response with the status code 429 Too Many Requests is returned.
 
-### 🔬 Exemplo de Configuração
+### 🔬 Configuration Example
 
-- Abaixo estão os exemplos das duas classes de throttle configuradas:
+- Below are examples of the two configured throttle classes
 
 1. - **RegistrationAnonRateThrottle**
 
-   Esta classe herda de `AnonRateThrottle` e define uma taxa de 5 requisições por dia para usuários anônimos.
+   This class inherits from `AnonRateThrottle` and sets a rate of 5 requests per day for anonymous users.
 
    ```python
    from rest_framework.throttling import AnonRateThrottle
@@ -29,14 +29,14 @@
        rate = "5/day"
    ```
 
-   **Explicação**:
+   **Explanation**:
 
-   - **Classe Base**: `AnonRateThrottle` é usada para usuários que não estão autenticados.
-   - **Rate**: Neste valor configurado como "5/day", o que significa que um usuário anônimo pode fazer até 5 requisições em um período de 24 horas.
+   - **Classe Base**: `AnonRateThrottle` is used for users who are not authenticated.
+   - **Rate**: This value is set to "5/day", which means that an anonymous user can make up to 5 requests in a 24 hour period.
 
 2. - **RegistrationUserRateThrottle**
 
-   Esta classe herda de `UserRateThrottle` e define uma taxa de 30 requisições por dia para usuários autenticados.
+   This class inherits from `UserRateThrottle` and sets a rate of 30 requests per day for authenticated users.
 
    ```python
    from rest_framework.throttling import UserRateThrottle
@@ -45,14 +45,14 @@
      rate = "30/day"
    ```
 
-   **Explicação**:
+   **Explanation**:
 
-   - **Classe Base**: `UserRateThrottle` é usada para usuários autenticados.
-   - **Rate**: A taxa é configurada como "30/day", o que significa que um usuário autenticado pode fazer até 30 requisições em um período de 24 horas.
+   - **Classe Base**: `UserRateThrottle` is used for authenticated users.
+   - **Rate**: The rate is set to "30/day", which means an authenticated user can make up to 30 requests in a 24-hour period.
 
 ## 👨🏽‍🏫 Como Usar
 
-- Para aplicar essas regras de throttling, você precisa adicioná-las à view ou ao conjunto de views no seu Django REST Framework:
+- To apply these throttling rules, you need to add them to the view or set of views in your Django REST Framework
 
   ```python
 
@@ -63,19 +63,18 @@
   throttle_classes = [RegistrationAnonRateThrottle, RegistrationUserRateThrottle]
 
   def post(self, request, *args, **kwargs):
-      # lógica de registro aqui
+      # registration logic here
       return Response({"message": "User registered successfully!"})
   ```
 
-- Passos:
+- Steps:
 
-1. - Crie as classes de throttle no arquivo **throttles.py**.
-2. - Adicione a configuração de throttle na view que deseja limitar o número de requisições, usando o parâmetro throttle_classes.
-3. - Defina a lógica da view (neste caso, a lógica de registro de usuário).
+1. - Create the throttle classes in the **throttles.py** file.
+2. - Add the throttle configuration to the view you want to limit the number of requests for, using the throttle_classes parameter.
+3. - Define the view logic (in this case, the user registration logic).
 
-## 🌐 Configurações Globais (Opcional)
-
-- Se preferir, você pode configurar essas classes de `throttle` globalmente, no arquivo de configurações settings.py, para que elas sejam aplicadas a todas as views:
+## 🌐 Global Settings (Optional)
+- If you prefer, you can configure these `throttle` classes globally, in the settings.py file, so that they apply to all views
 
     ```python
     REST_FRAMEWORK = {
@@ -90,6 +89,6 @@
     }
     ```
 
-## ✅ Conclusão
-- O uso de throttling é essencial para proteger a API contra abuso de requisições excessivas.
-Ao configurar corretamente, você garante que tanto usuários anônimos quanto autenticados sigam os limites estabelecidos, mantendo a saúde e a segurança do seu sistema.
+## ✅ Conclusion
+- Using throttling is essential to protect your API from abuse due to excessive requests.
+When configured correctly, you can ensure that both anonymous and authenticated users follow the established limits, maintaining the health and security of your system.
