@@ -30,11 +30,11 @@ school_api/
 
 ## 🎛️ Features
 
-- **Gestão de Estudantes**: Register, update and manage student data, including name, email and CPF.
-- **Gestão de Cursos**: Creation and management of courses with levels of complexity (Basic, Intermediate and Advanced).
-- **Gestão de Matrículas**: Enrollment of students in courses, with options for different shifts (Morning, Afternoon, Evening).
-- **Documentação interativa**: Uses Swagger and Redoc to display API documentation interactively.
-- **Autenticação JWT**: To secure routes and ensure that only authenticated users can access functionality.
+- **Student Management**: Register, update and manage student data, including name, email and CPF.
+- **Course Management**: Creation and management of courses with levels of complexity (Basic, Intermediate and Advanced).
+- **Enrollment Management**: Enrollment of students in courses, with options for different shifts (Morning, Afternoon, Evening).
+- **Interactive documentation**: Uses Swagger and Redoc to display API documentation interactively.
+- **JWT authentication**: To secure routes and ensure that only authenticated users can access functionality.
 - [**Throttle**](./school/views/throttles/README.md): Limitation of requests per user and anonymously to avoid unwanted consumption when using the API.
 
 ## 🛠️ Technologies Used
