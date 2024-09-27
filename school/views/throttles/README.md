@@ -50,7 +50,7 @@
    - **Classe Base**: `UserRateThrottle` is used for authenticated users.
    - **Rate**: The rate is set to "30/day", which means an authenticated user can make up to 30 requests in a 24-hour period.
 
-## 👨🏽‍🏫 Como Usar
+## 👨🏽‍🏫 How to Use
 
 - To apply these throttling rules, you need to add them to the view or set of views in your Django REST Framework
 
