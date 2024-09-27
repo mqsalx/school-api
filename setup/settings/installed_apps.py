@@ -5,10 +5,10 @@ INSTALLED_APPS = [
     "django.contrib.sessions",
     "django.contrib.messages",
     "django.contrib.staticfiles",
-    "school",
     "rest_framework",
     "django_filters",
-    "drf_yasg",
     "corsheaders",
-    "sslserver",
+    "drf_yasg",
+    "school",
+    "rest_framework_simplejwt",
 ]
